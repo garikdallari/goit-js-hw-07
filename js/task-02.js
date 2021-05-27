@@ -9,15 +9,15 @@ const ingredients = [
   'Приправы',
 ];
 
-function addElement(array) {
+const addElement = array => {
 
-  array.forEach(elem => {
-   const itemRef = document.createElement('li')
+  return array.map(elem => {
+  const itemRef = document.createElement('li')
   itemRef.textContent = elem;
-   return ingredientsRef.appendChild(itemRef)
-});
+  return itemRef
+  });
  
 }
-
-addElement(ingredients)
+const listArray = addElement(ingredients)
+ingredientsRef.append(...listArray)
 

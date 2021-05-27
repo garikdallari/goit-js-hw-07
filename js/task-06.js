@@ -2,20 +2,24 @@ const inpRef = document.querySelector('#validation-input')
 
 
 inpRef.addEventListener('blur', onBorderColorAdd);
-inpRef.style.border = '3px solid #bdbdbd'
+
 
 function onBorderColorAdd(event) {
     const elem = event.currentTarget
+    const elemValueLength = elem.value.length;
+    const elemAttrValue = Number(elem.getAttribute('data-length'));
     
-    if (elem.value.length === Number(elem.getAttribute('data-length'))) {
-        elem.style.borderColor = '#4caf50'
+    if (elemValueLength === elemAttrValue) {
+        inpRef.classList.add('valid')
+        inpRef.classList.remove('invalid')
     }
 
-    if (elem.value.length !== Number(elem.getAttribute('data-length'))) {
-        elem.style.borderColor = '#f44336'
+    if (elemValueLength !== elemAttrValue) {
+        inpRef.classList.remove('valid')
+        inpRef.classList.add('invalid')
     }
 
     if (elem.value.length === 0) {
-        elem.style.border = '3px solid #bdbdbd'
+        inpRef.classList.remove('invalid')
     }
 }
